@@ -159,6 +159,8 @@ int main( int argc, char** argv )
             {
                resp.add_header("Access-Control-Allow-Origin",
                                options.count( "rpc-http-cors" ) ? options.at( "rpc-http-cors" ).as<string>() : "*");
+               resp.add_header("Access-Control-Allow-Headers", "Access-Control-Allow-Origin,Content-Type,Content-Length");
+               resp.add_header("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH");
                std::shared_ptr< fc::rpc::http_api_connection > conn =
                   std::make_shared< fc::rpc::http_api_connection>();
                conn->register_api( alex_api );
